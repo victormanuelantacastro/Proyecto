@@ -1,0 +1,19 @@
+#footer {
+    color: rgb(240, 200, 0);
+    ;
+    background-color: black;
+}
+
+div>h3 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    text-align: center;
+}
+
+li>a {
+    color: rgb(240, 200, 0);
+}

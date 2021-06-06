@@ -1,0 +1,84 @@
+CREATE DATABASE IF NOT EXISTS `proyecto` ;
+use  `proyecto`;
+
+CREATE TABLE `usuario` (
+  `dni` varchar(9) NOT NULL UNIQUE,
+  `nombre` varchar(150) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `direccion` varchar(45) NOT NULL,
+  `codigoPostal` varchar(45) NOT NULL,
+  `telefono` varchar(45) NOT NULL,
+  `usuario` varchar(45) NOT NULL UNIQUE,
+  `email` varchar(45) NOT NULL UNIQUE,
+  `hash` varchar(32) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `active` int (1) NOT NULL DEFAULT '0',
+  `isAdmin` int (1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`dni`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
+
+CREATE TABLE `producto` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `nombre` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+ `descripcion` text COLLATE utf8_unicode_ci,
+ `precio` float(10,2) NOT NULL,
+ `tipo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `orders` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `dni_usuario` varchar(9) NOT NULL,
+ `precio_total` float(10,2) NOT NULL,
+ `fechaCreacion` datetime NOT NULL,
+ `estado` int(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+ PRIMARY KEY (`id`),
+ KEY `dni` (`dni_usuario`),
+ CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`dni_usuario`) REFERENCES `usuario` (`dni`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `order_items` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `order_id` int(11) NOT NULL,
+ `product_id` int(11) NOT NULL,
+ `cantidad` int(5) NOT NULL,
+ PRIMARY KEY (`id`),
+ KEY `order_id` (`order_id`),
+ CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `producto` (`nombre`, `descripcion`, `precio`, `tipo`) VALUES
+('Bocadillo de hamburguesa de ternera', '', '3.25', 'Bocata'), 
+('Bocadillo de hamburguesa de pollo', '', '3.25', 'Bocata'),
+('Bocadillo de corazones de pollo', '', '3.50', 'Bocata'),
+('Bocadillo de pinchitos de pollo', '', '3.90', 'Bocata'),
+('Bocadillo de pinchitos de ternera', '', '3.90', 'Bocata'),
+('Bocadillo de pinchitos de ternera', '', '3.90', 'Bocata'),
+('Bocadillo de lomo adobado', '', '3.90', 'Bocata'),
+('Campero de hamburguesa de ternera', '', '4.25', 'Bocata'), 
+('Campero de hamburguesa de pollo', '', '4.25', 'Bocata'),
+('Campero de corazones de pollo', '', '4.50', 'Bocata'),
+('Campero de pinchitos de pollo', '', '4.90', 'Bocata'),
+('Campero de pinchitos de ternera', '', '4.90', 'Bocata'),
+('Campero de pinchitos de ternera', '', '4.90', 'Bocata'),
+('Campero de lomo adobado', '', '4.90', 'Bocata'),
+('Ensalada mediterranea', 'Lechuga,tomate cherry, aceitunas verde y cebolla', '3.40', 'Entrantes'),
+('Ensalada cesar', 'Lechuga, pechuga de pollo, picatoste, queso parmesano y salsa césar', '3.80', 'Entrantes'),
+('Ensalada de la casa', 'Lechuga, tomate, cebolla, atún, huevo duro y pepino', '3.80', 'Entrantes'),
+('Patatas fritas', '', '2.00', 'Entrantes'),
+('Patatas gajo', '', '2.20', 'Entrantes'),
+('Nuggets de pollo', '', '2.00', 'Entrantes'),
+('Muslito de cangrejos rebozados', '', '2.60', 'Entrantes'),  
+('Fanta de naranja', '', '1.00' , 'Bebida'),
+('Fanta de naranja zero', '', '1.00' , 'Bebida'),
+('Fanta de limon', '', '1.00' , 'Bebida'),
+('Coca cola', '', '1.00' , 'Bebida'),
+('Coca cola light', '', '1.00' , 'Bebida'),
+('Coca cola zero', '', '1.00' , 'Bebida'),
+('Coca cola zero zero', '', '1.00' , 'Bebida'),
+('Sprite', '', '1.00' , 'Bebida'),
+('Cruz Campo sin alcohol', '', '1.10' , 'Bebida'),
+('Cruz Campo', '', '1.10' , 'Bebida'),
+('Tinto de verano', '', '1.20' , 'Bebida'),
+('Agua', '', '1.00' , 'Bebida');
+INSERT INTO usuario ( dni, nombre , apellidos, direccion, codigoPostal, telefono, usuario, email , hash , password , isAdmin) VALUES ('00000000a','administrador','administrador','administrador','00000','000000000','admin','victormanuelantacastro87@gmail.com' , '0' ,'admin' , '1');

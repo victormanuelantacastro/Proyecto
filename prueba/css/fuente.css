@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "Berlin sans Demi bold";
+        src: url("../font/BRLNSDB.ttf");
+    }
+    body{
+        font-family: "Berlin sans Demi bold";
+    }
