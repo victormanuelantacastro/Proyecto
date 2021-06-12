@@ -1,0 +1,9 @@
+.navbar.navbar-expand-lg {
+    background-color: black;
+}
+.dropdown-menu{
+    background-color:black;
+}
+.dropdown-item{
+    color:rgb(240, 200, 0);
+}

@@ -10,9 +10,7 @@ CREATE TABLE `usuario` (
   `telefono` varchar(45) NOT NULL,
   `usuario` varchar(45) NOT NULL UNIQUE,
   `email` varchar(45) NOT NULL UNIQUE,
-  `hash` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `active` int (1) NOT NULL DEFAULT '0',
   `isAdmin` int (1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`dni`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ;
@@ -81,4 +79,4 @@ INSERT INTO `producto` (`nombre`, `descripcion`, `precio`, `tipo`) VALUES
 ('Cruz Campo', '', '1.10' , 'Bebida'),
 ('Tinto de verano', '', '1.20' , 'Bebida'),
 ('Agua', '', '1.00' , 'Bebida');
-INSERT INTO usuario ( dni, nombre , apellidos, direccion, codigoPostal, telefono, usuario, email , hash , password , isAdmin) VALUES ('00000000a','administrador','administrador','administrador','00000','000000000','admin','victormanuelantacastro87@gmail.com' , '0' ,'admin' , '1');
+INSERT INTO usuario ( dni, nombre , apellidos, direccion, codigoPostal, telefono, usuario, email ,  password , isAdmin) VALUES ('00000000a','administrador','administrador','administrador','00000','000000000','admin','victormanuelantacastro87@gmail.com' , 'admin' , '1');

@@ -1,0 +1,17 @@
+.col-md-2.ml-3 {
+  border: black solid 1px;
+  border-radius: 15px;
+  background-color: black;
+  color: rgb(240, 200, 0);
+}
+
+h1 {
+  display: inline;
+}
+
+.carousel-inner img {
+  margin: auto;
+  object-fit: scale-down;
+  height: 50vh;
+  width: 100%;
+}

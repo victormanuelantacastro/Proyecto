@@ -1,0 +1,22 @@
+#caja-foto {
+    position: relative;
+    /* para poder posicionar el texto de forma absoluta */
+    display: inline-block;
+    /* para que solo ocupe el ancho de la imagen */
+
+}
+
+#subtitulo {
+    position: absolute;
+    /* posición absolute con respecto al padre */
+    bottom: 0;
+    background-color: black;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+
+#caja-foto>div>a {
+    color: rgb(240, 200, 0);
+    font-weight: bold;
+
+}

@@ -1,0 +1,36 @@
+.alert {
+  font-weight: bold;
+}
+
+p {
+  font-size: 100%;
+}
+
+.mt-1.mb-2.col-md-12 > div > a > i {
+  color: black;
+}
+
+cite {
+  color: rgb(240, 200, 0);
+}
+
+.fa {
+  color: rgb(240, 200, 0);
+}
+
+h4{
+    border:3px solid black;
+}
+
+.carousel-inner img {
+    margin: auto;
+    object-fit: scale-down;
+    height: 50vh;
+    width: 100%;
+}
+
+.carousel-control-next,.carousel-control-prev {
+    background-color: black;
+}
+
+
