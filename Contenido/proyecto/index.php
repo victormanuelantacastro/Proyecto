@@ -122,9 +122,9 @@ if (!empty($_SESSION['activo'])) {
                 <div class="col-sm-6 ">
                     <h4 class="text-center">El local</h4>
                     <p class="lead">
-                        Somos una hamburguesería con mucha personalidad localizada en Camas. La gran calidad de nuestra carne hecha a la brasa con nuestra mezcla de especias secreta, nuestro pan tostado al grill
+                        Somos una hamburguesería con mucha personalidad localizada en Camas. La gran calidad de nuestras carnes, hecha a la brasa con nuestra mezcla de especias secretas, nuestro pan tostado al grill
                         la preparación de la comida en el momento y el amor dedicado a cada elaboración de nuestros productos es una de nuestras señas más importantes. <br>
-                        Nuestro local cuenta con capacidad para unos 180 comensales que se dividen entre el salón principal, en el que se ubican unas 22 mesas, y la zona de terraza, habilitada para unas 10.
+                        Nuestro local cuenta con capacidad para unos 180 comensales que se dividen entre el salón principal, en el que se ubican unas 22 mesas, y la zona de terraza, habilitada para otras 10.
                     </p>
                 </div>
             </div>
@@ -138,7 +138,7 @@ if (!empty($_SESSION['activo'])) {
                 <div class="col-sm-6 ">
                     <h4 class="text-center">Nuestra especialidad</h4>
                     <p class="lead">
-                        Heredados de Granada y afincados también en Málaga y Ceuta, os traemos los míticos camperos. Molletes de un tamaño mayor al habitual en el cual integramos
+                        Heredados de Granada y afincados también en Málaga y Ceuta, os traemos los míticos CAMPEROS. Molletes de un tamaño mayor al habitual en el cual integramos
                         cada uno de nuestros ingredientes para finalizar el mismo en un tostado de pan al grill, haciendo que cada bocado sea más crujiente y atempere toda
                         la composición del producto. Y si decides añadir nuestros pinchitos (pollo o ternera), podrá disfrutar de nuestra mezcla secreta de especias, que hará
                         que vuestro paladar disfrute de los aromas y sabores de oriente.
@@ -151,7 +151,7 @@ if (!empty($_SESSION['activo'])) {
         </div>
     </section>
     <!--Fin de la sección de la información de la especialidad-->
-    <!--Seccion que contiene informacion de la especialidad-->
+    <!--Seccion que contiene informacion de la localizacion-->
     <section id="local">
         <div class="container-fluid ">
             <div class="row">
@@ -182,7 +182,7 @@ if (!empty($_SESSION['activo'])) {
             </div>
         </div>
     </section>
-    <!--Fin de la sección de la información de la especialidad-->
+    <!--Fin de la sección de la información de la localizacion-->
     <!--Inicio Carrousel-->
     <div class="container mb-4">
         <div class="row justify-content-center">
