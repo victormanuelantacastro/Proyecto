@@ -40,7 +40,7 @@ if (empty($_SESSION['activo'])) {
                     <ul class="nav navbar-nav">
                         <li class="navbar-nav mr-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['usuario'] ?>
+                            <i class="fa fa-user"></i>&nbsp;&nbsp;<?php echo $_SESSION['usuario'] ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="inicioUsuario.php">Inicio</a>
@@ -50,7 +50,7 @@ if (empty($_SESSION['activo'])) {
                         </li>
                         <li><a class="nav-item nav-link" href="entrante.php">Entrantes</a> </li>
                         <li><a class="nav-item nav-link" href="bocadillo.php">Bocadillos Y Camperos</a> </li>
-                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Estado del pedido</a> </li>
+                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Estado de su pedido</a> </li>
                     </ul>
                 </div>
             </div>
@@ -102,11 +102,13 @@ if (empty($_SESSION['activo'])) {
             if ($query->num_rows > 0) {
                 while ($row = $query->fetch_assoc()) {
             ?>
-                    <div class="col-md-2 ml-3 mb-4">
+                    <div class="col-lg-2 ml-3 mb-4">
                         <h4 class="list-group-item-heading"><?php echo $row["nombre"]; ?></h4>
                         <p class="list-group-item-text"><?php echo $row["descripcion"]; ?></p>
                         <p class="lead"><?php echo $row["precio"] . ' €'; ?></p>
-                        <a class="btn btn-success my-2" href="../controlador/cartAction.php?action=addToCart&id=<?php echo $row["id"]; ?>">Añadir al carro</a>
+                        <div id="pie">
+                            <a class="btn btn-success my-2" href="../controlador/cartAction.php?action=addToCart&id=<?php echo $row["id"]; ?>">Añadir al carro</a>
+                        </div>
                     </div>
                 <?php }
             } else { ?>

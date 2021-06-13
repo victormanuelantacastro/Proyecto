@@ -6,7 +6,7 @@ include '../controlador/conexion.php';
 include '../controlador/Cart.php';
 $cart = new Cart;
 
-// redirect to home if cart is empty
+// Redirecciona
 if ($cart->total_items() <= 0) {
     header("Location: ../index.php");
 }
@@ -55,7 +55,7 @@ $query = $conn->query("SELECT * FROM customers WHERE dni = " . $_SESSION['dni'])
                     <ul class="nav navbar-nav">
                         <li class="navbar-nav mr-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['usuario'] ?>
+                            <i class="fa fa-user"></i>&nbsp;&nbsp;<?php echo $_SESSION['usuario'] ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="inicioUsuario.php">Inicio</a>
@@ -66,7 +66,7 @@ $query = $conn->query("SELECT * FROM customers WHERE dni = " . $_SESSION['dni'])
                         <li><a class="nav-item nav-link" href="entrante.php">Entrantes</a> </li>
                         <li><a class="nav-item nav-link" href="bocadillo.php">Bocadillos Y Camperos</a> </li>
                         <li><a class="nav-item nav-link" href="bebida.php">Bebida</a> </li>
-                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Estado del pedido</a> </li>
+                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Estado de su pedido</a> </li>
                     </ul>
                 </div>
             </div>

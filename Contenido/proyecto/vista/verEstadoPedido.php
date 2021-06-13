@@ -42,13 +42,13 @@ $resultado = $conn->query($sql);
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid ">
                 <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <i class="fa fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
                     <ul class="nav navbar-nav">
                         <li class="navbar-nav mr-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['usuario'] ?>
+                            <i class="fa fa-user"></i>&nbsp;&nbsp;<?php echo $_SESSION['usuario'] ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="inicioUsuario.php">Inicio</a>
@@ -59,7 +59,6 @@ $resultado = $conn->query($sql);
                         <li><a class="nav-item nav-link" href="entrante.php">Entrantes</a> </li>
                         <li><a class="nav-item nav-link" href="bocadillo.php">Bocadillos Y Camperos</a> </li>
                         <li><a class="nav-item nav-link" href="bebida.php">Bebida</a> </li>
-                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Estado del pedido</a> </li>
                     </ul>
                 </div>
             </div>

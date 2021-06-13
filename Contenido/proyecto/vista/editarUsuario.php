@@ -42,7 +42,7 @@ if (empty($_SESSION['activo'])) {
                     <ul class="nav navbar-nav">
                         <li class="navbar-nav mr-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['usuario'] ?>
+                            <i class="fa fa-user"></i>&nbsp;&nbsp;<?php echo $_SESSION['usuario'] ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="inicioUsuario.php">Inicio</a>
@@ -53,7 +53,7 @@ if (empty($_SESSION['activo'])) {
                         <li><a class="nav-item nav-link" href="entrante.php">Entrantes</a> </li>
                         <li><a class="nav-item nav-link" href="bocadillo.php">Bocadillos Y Camperos</a> </li>
                         <li><a class="nav-item nav-link" href="bebida.php">Bebida</a> </li>
-                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Siga el estado de su pedido</a> </li>
+                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Estado de su pedido</a> </li>
                     </ul>
                 </div>
             </div>

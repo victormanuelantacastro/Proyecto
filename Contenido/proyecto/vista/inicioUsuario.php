@@ -42,7 +42,7 @@ if (empty($_SESSION['activo'])) {
                     <ul class="nav navbar-nav">
                         <li class="navbar-nav mr-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['usuario'] ?>
+                                <i class="fa fa-user"></i>&nbsp;&nbsp;<?php echo $_SESSION['usuario'] ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="inicioUsuario.php">Inicio</a>
@@ -71,8 +71,8 @@ if (empty($_SESSION['activo'])) {
         <div class="row mb-3">
             <div class="col-12 col-sm-6">
                 <div id="caja-foto">
-                <a href="entrante.php"><img id="content_div_one_photo" class="img-fluid" src="../images/patatasfritas.jpg"></a>
-                <div id="subtitulo" class="col-12 text-center"><a href="entrante.php">Entrantes</a></div>
+                    <a href="entrante.php"><img id="content_div_one_photo" class="img-fluid" src="../images/patatasfritas.jpg"></a>
+                    <div id="subtitulo" class="col-12 text-center"><a href="entrante.php">Entrantes</a></div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 ">
@@ -85,14 +85,14 @@ if (empty($_SESSION['activo'])) {
         <div class="row mb-3">
             <div class="col-12 col-sm-6">
                 <div id="caja-foto">
-                <a href="bebida.php"><img id="content_div_one_photo" class="img-fluid" src="../images/conjuntorefresco.jpg"></a>
-                <div id="subtitulo" class="col-12 text-center"><a href="bebida.php">Bebidas</a></div>
+                    <a href="bebida.php"><img id="content_div_one_photo" class="img-fluid" src="../images/conjuntorefresco.jpg"></a>
+                    <div id="subtitulo" class="col-12 text-center"><a href="bebida.php">Bebidas</a></div>
                 </div>
             </div>
             <div class="col-12 col-sm-6">
                 <div id="caja-foto">
-                <a href="verEstadoPedido.php"><img src="../images/repartidor.jpg" class="img-fluid" alt=""></a>
-                <div id="subtitulo" class="col-12 text-center"><a href="verEstadoPedido.php">Estado del pedido</a></div>
+                    <a href="verEstadoPedido.php"><img src="../images/repartidor.jpg" class="img-fluid" alt=""></a>
+                    <div id="subtitulo" class="col-12 text-center"><a href="verEstadoPedido.php">Estado del pedido</a></div>
                 </div>
             </div>
         </div>

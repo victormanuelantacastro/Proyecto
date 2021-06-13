@@ -74,7 +74,7 @@
             <div class="form-group row justify-content-md-center text-center">
                 <label class="col-lg-12 col-form-label">Codigo Postal: </label>
                 <div class="col-lg-6">
-                    <input type="text" class="form-control" name="cp" id="cp" pattern="[0-9]{5}" title="Introduzca 5 números" required>
+                    <input type="text" class="form-control" name="cp" id="cp" pattern="41900|41910" title="Introduzca el código postal de Camas" required>
                 </div>
             </div>
             <div class="form-group row justify-content-md-center text-center">

@@ -7,6 +7,17 @@ if (empty($_SESSION['activo'])) {
 } else if (!empty($_SESSION['activo']) && $_SESSION['isAdmin'] == 0) {
     header('location: inicioUsuario.php');
 }
+
+//Traemos la conexión
+require '../controlador/conexion.php';
+
+$sql = "SELECT estado from orders where estado=0";
+$resultado = $conn->query($sql);
+$fila = $resultado->fetch_row();
+
+
+
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -15,6 +26,7 @@ if (empty($_SESSION['activo'])) {
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Refresh" content="15">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -49,7 +61,13 @@ if (empty($_SESSION['activo'])) {
                         </li>
                         <li><a class="nav-item nav-link" href="añadirProducto.php">Añadir producto</a> </li>
                         <li><a class="nav-item nav-link" href="verProductos.php">Gestionar producto</a> </li>
-                        <li><a class="nav-item nav-link" href="verPedidosPendientes.php">Pedidos pendientes</a> </li>
+
+                        <?php if ($fila) { ?>
+                            <li><a class="nav-item nav-link" href="verPedidosPendientes.php"><i class="fa fa-bell"></i>&nbsp;&nbsp;Pedidos pendientes</a> </li>
+                        <?php } else { ?>
+                            <li><a class="nav-item nav-link" href="verPedidosPendientes.php">Pedidos pendientes</a></li>
+                        <?php } ?>
+
                         <li><a class="nav-item nav-link" href="verPedidosFinalizados.php">Pedidos finalizados</a> </li>
                     </ul>
                 </div>
@@ -67,7 +85,11 @@ if (empty($_SESSION['activo'])) {
                 <a href="verProductos.php" class="btn btn-primary btn-lg btn-block">Gestionar producto</a>
             </div>
             <div class="col-lg-8 mb-2">
-                <a href="verPedidosPendientes.php" class="btn btn-primary btn-lg btn-block">Pedidos pendientes</a>
+                <?php if ($fila) { ?>
+                    <a class="btn btn-primary btn-lg btn-block" href="verPedidosPendientes.php"><i class="fa fa-bell"></i>&nbsp;&nbsp;Pedidos pendientes</a>
+                <?php } else { ?>
+                    <a class="btn btn-primary btn-lg btn-block" href="verPedidosPendientes.php">Pedidos pendientes</a>
+                <?php } ?>
             </div>
             <div class="col-lg-8 mb-2">
                 <a href="verPedidosFinalizados.php" class="btn btn-primary btn-lg btn-block">Pedidos finalizados</a>
@@ -110,36 +132,36 @@ if (empty($_SESSION['activo'])) {
     <!--Final pie-->
     <!--Empieza el modal-->
     <div class="modal" tabindex="-1" id="formulario">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Producto más vendido</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form action="../controlador/grafico.php">
-          <label for="mes">Elija el més:</label>
-          <input type="number" value="1" min="1" max="12" id="mes" name="mes"><br>
-          <label>Elija el tipo de producto:</label><br>
-          <input type="radio" name="tipo" id="entrantes" value="entrantes" checked>
-          <label for="entrantes">Entrantes</label>
-          <input type="radio" name="tipo" id="bebida" value="bebida">
-          <label for="bebida">Bebida</label>
-          <input type="radio" name="tipo" id="bocata" value="bocata">
-          <label for="bocata">Bocata</label>
-          
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit"  class="btn btn-primary">Ver gráfica</button>
-        </form>
-      </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Producto más vendido</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="../controlador/grafico.php">
+                        <label for="mes">Elija el més:</label>
+                        <input type="number" value="1" min="1" max="12" id="mes" name="mes"><br>
+                        <label>Elija el tipo de producto:</label><br>
+                        <input type="radio" name="tipo" id="entrantes" value="entrantes" checked>
+                        <label for="entrantes">Entrantes</label>
+                        <input type="radio" name="tipo" id="bebida" value="bebida">
+                        <label for="bebida">Bebida</label>
+                        <input type="radio" name="tipo" id="bocata" value="bocata">
+                        <label for="bocata">Bocata</label>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Ver gráfica</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
     <!--Acaba el modal-->
     <!-- Bootstrap Bundle with Popper & jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
