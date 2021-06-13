@@ -62,7 +62,9 @@ if (!empty($_SESSION['activo'])) {
     <link rel="stylesheet" href="css/inicio.css">
 
     <title>Tartessos Burger - Index</title>
+<style>
 
+</style>
 </head>
 
 <body>
@@ -164,15 +166,15 @@ if (!empty($_SESSION['activo'])) {
                         <p>¿A qué estais esperando? Venid !YA¡ a probar nuestros riquísimos camperos , encargarlos via web o a través
                             de nuestro teléfono : <i class="fa fa-phone"></i> <cite>954235687</cite></p>
                     </div>
-                    <div class="container">
+                    <div class="container" >
                         <div class="row lead">
                             <div class="col-lg-8 ">
                                 <p>De Martes a Jueves : <cite>19:00 a 0:00h.</cite> <br>
                                     Viernes a Domingo <cite>12:00 a 16:00h.</cite> <br> <cite>19:00 a 0:00h.</cite> <br>
                                     Lunes CERRADO por descanso del personal</p>
                             </div>
-                            <div class="col-lg-4 ">
-                                <i class="fa fa-hourglass fa-3x mt-4"></i>
+                            <div class="col-lg-4" >
+                                <i class="fa fa-hourglass fa-3x mt-4 mb-2 px-5"></i>
                             </div>
                         </div>
                     </div>

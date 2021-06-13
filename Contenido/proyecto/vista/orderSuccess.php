@@ -1,7 +1,5 @@
 <?php
-if (!isset($_REQUEST['id'])) {
-    header("Location: iniciarCompra.php");
-}
+
 //Traemos la sesion
 session_start();
 //Si el usuario no tiene sesión activa mandalo al index, y si tiene sesión activa y isAdmin = 1 mándalo a la página de administración
@@ -23,21 +21,12 @@ if (empty($_SESSION['activo'])) {
     <link rel="stylesheet" href="../css/cabecera.css">
     <link rel="stylesheet" href="../css/pie.css">
     <link rel="stylesheet" href="../css/fuente.css">
+    <link rel="stylesheet" href="../css/btn.css">
+    <link rel="stylesheet" href="../css/noCreado.css">
     <style>
-        .container {
-            width: 100%;
-            padding: 50px;
-        }
 
-        p {
-            color: #34a853;
-            font-size: 18px;
-        }
 
-        button>a {
-            color: white;
-            text-decoration: none;
-        }
+
     </style>
 </head>
 
@@ -73,7 +62,7 @@ if (empty($_SESSION['activo'])) {
         </nav>
     </header>
     <!--Final cabecera-->
-    <div class="container">
+    <div class="container p-5">
         <h1>Estado del pedido</h1>
         <p>Tu pedido ha sido procesado satisfactoriamente. Su número de pedido es #<?php echo $_GET['id']; ?></p>
         <p>Para consultar el estado del mismo , pinche <a href="verEstadoPedido.php">aquí</a></p>

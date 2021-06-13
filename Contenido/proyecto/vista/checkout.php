@@ -3,7 +3,7 @@
 include '../controlador/conexion.php';
 
 //Traigo la clase Cart y la inicializo
-include '../controlador/Cart.php';
+include '../controlador/cart.php';
 $cart = new Cart;
 
 // Redirecciona
@@ -20,8 +20,6 @@ if (empty($_SESSION['activo'])) {
     header('location: inicioAdmin.php');
 }
 
-// get customer details by session customer ID
-$query = $conn->query("SELECT * FROM customers WHERE dni = " . $_SESSION['dni']);
 
 ?>
 <!DOCTYPE html>
