@@ -63,11 +63,7 @@ switch ($mes) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/cabecera.css">
     <link rel="stylesheet" href="../css/pie.css">
-    <style>
-        button > a{
-            color:white
-        }
-    </style>
+    <link rel="stylesheet" href="../css/btn.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
         google.charts.load('current', {
@@ -115,15 +111,15 @@ switch ($mes) {
                                 <?php echo $_SESSION['usuario'] ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="inicioUsuario.php">Inicio</a>
-                                <a class="dropdown-item" href="editarUsuario.php">Editar Perfil</a>
-                                <a class="dropdown-item" href="../controlador/salir.php">Salir</a>
+                                <a class="dropdown-item" href="../vista/inicioAdmin.php">Inicio</a>
+                                <a class="dropdown-item" href="../vista/editarAdmin.php">Editar Perfil</a>
+                                <a class="dropdown-item" href="salir.php">Salir</a>
                             </div>
                         </li>
-                        <li><a class="nav-item nav-link" href="entrante.php">Entrantes</a> </li>
-                        <li><a class="nav-item nav-link" href="bocadillo.php">Bocadillos Y Camperos</a> </li>
-                        <li><a class="nav-item nav-link" href="bebida.php">Bebida</a> </li>
-                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Estado del pedido</a> </li>
+                        <li><a class="nav-item nav-link" href="../vista/añadirProducto.php">Añadir producto</a> </li>
+                        <li><a class="nav-item nav-link" href="../vista/verProductos.php">Gestionar producto</a> </li>
+                        <li><a class="nav-item nav-link" href="../vista/verPedidosPendientes.php">Pedidos pendientes</a> </li>
+                        <li><a class="nav-item nav-link" href="../vista/verPedidosFinalizados.php">Pedidos finalizados</a> </li>
                     </ul>
                 </div>
             </div>

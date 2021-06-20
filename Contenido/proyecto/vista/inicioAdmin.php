@@ -62,13 +62,7 @@ $fila = $resultado->fetch_row();
                         </li>
                         <li><a class="nav-item nav-link" href="añadirProducto.php">Añadir producto</a> </li>
                         <li><a class="nav-item nav-link" href="verProductos.php">Gestionar producto</a> </li>
-
-                        <?php if ($fila) { ?>
-                            <li><a class="nav-item nav-link" href="verPedidosPendientes.php"><i class="fa fa-bell"></i>&nbsp;&nbsp;Pedidos pendientes</a> </li>
-                        <?php } else { ?>
-                            <li><a class="nav-item nav-link" href="verPedidosPendientes.php">Pedidos pendientes</a></li>
-                        <?php } ?>
-
+                        <li><a class="nav-item nav-link" href="verPedidosPendientes.php">Pedidos pendientes</a> </li>
                         <li><a class="nav-item nav-link" href="verPedidosFinalizados.php">Pedidos finalizados</a> </li>
                     </ul>
                 </div>

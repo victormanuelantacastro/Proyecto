@@ -36,7 +36,7 @@ $resultado = $conn->query($sql);
     <!-- Bootstrap Bundle with Popper & jquery-->
     <script src="../js/jquery-3.6.0.min.js"></script>
 
-    <title>Pedidos Pendientes</title>
+    <title>Pedidos Finalizados</title>
 
     <script>
         $(document).ready(function() {
