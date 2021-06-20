@@ -40,12 +40,13 @@ if(isset($_REQUEST['action']) && !empty($_REQUEST['action'])){
         if($insertOrder){
             $orderID = $conn->insert_id;
             $sql = '';
-            // Cojo los items del carro
+            // Cojo los articulos del carro
             $cartItems = $cart->contents();
+            // inserto los artículos en la base de datos
             foreach($cartItems as $item){
                 $sql .= "INSERT INTO order_items (order_id, product_id, cantidad) VALUES ('".$orderID."', '".$item['id']."', '".$item['qty']."');";
             }
-            // insert order items into database
+            
             $insertOrderItems = $conn->multi_query($sql);
             
             if($insertOrderItems){

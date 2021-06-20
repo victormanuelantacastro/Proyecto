@@ -6,24 +6,24 @@ class Cart {
     protected $cart_contents = array();
     
     public function __construct(){
-        // get the shopping cart array from the session
+        // obtengo el array del carrito de la compra de la sesión
         $this->cart_contents = !empty($_SESSION['cart_contents'])?$_SESSION['cart_contents']:NULL;
         if ($this->cart_contents === NULL){
-            // set some base values
+            // establezco algunos valores base 
             $this->cart_contents = array('cart_total' => 0, 'total_items' => 0);
         }
     }
     
     /**
-     * Cart Contents: Returns the entire cart array
+     * Contenido del carrito de la compra: Devuelve todo el array del carrito
      * @param    bool
      * @return    array
      */
     public function contents(){
-        // rearrange the newest first
+        // Reorganizo el carrito poniendo lo más nuevo primero
         $cart = array_reverse($this->cart_contents);
 
-        // remove these so they don't create a problem when showing the cart table
+        // Elimino para que no creen un problema al mostrar la tabla del carrito
         unset($cart['total_items']);
         unset($cart['cart_total']);
 
@@ -31,7 +31,7 @@ class Cart {
     }
     
     /**
-     * Get cart item: Returns a specific cart item details
+     * Obtengo artículos del carrito: Devuelve los detalles de un artículo específico del carrito
      * @param    string    $row_id
      * @return    array
      */
@@ -42,7 +42,7 @@ class Cart {
     }
     
     /**
-     * Total Items: Returns the total item count
+     * Total de artículos en el carrito: Devuelve el recuento total de artículos.
      * @return    int
      */
     public function total_items(){
@@ -50,7 +50,7 @@ class Cart {
     }
     
     /**
-     * Cart Total: Returns the total price
+     * Total del carrito: Devuelve el precio total.
      * @return    int
      */
     public function total(){
@@ -58,7 +58,7 @@ class Cart {
     }
     
     /**
-     * Insert items into the cart and save it to the session
+     * Inserta árticulos en el carrito y los guarda en la sesion.
      * @param    array
      * @return    bool
      */
@@ -72,23 +72,23 @@ class Cart {
                 /*
                  * Insert Item
                  */
-                // prep the quantity
+                // preparo la cantidad
                 $item['qty'] = (float) $item['qty'];
                 if($item['qty'] == 0){
                     return FALSE;
                 }
-                // prep the price
+                // preparo el precio
                 $item['precio'] = (float) $item['precio'];
-                // create a unique identifier for the item being inserted into the cart
+                // crea un identificador único para el artículo que se inserta en el carrito
                 $rowid = md5($item['id']);
-                // get quantity if it's already there and add it on
+                // obtenga la cantidad si está lista y la agrega
                 $old_qty = isset($this->cart_contents[$rowid]['qty']) ? (int) $this->cart_contents[$rowid]['qty'] : 0;
                 // re-create the entry with unique identifier and updated quantity
                 $item['rowid'] = $rowid;
                 $item['qty'] += $old_qty;
                 $this->cart_contents[$rowid] = $item;
                 
-                // save Cart Item
+                // Guarda artículo del carrito
                 if($this->save_cart()){
                     return isset($rowid) ? $rowid : TRUE;
                 }else{
@@ -99,7 +99,7 @@ class Cart {
     }
     
     /**
-     * Update the cart
+     * Actualizar carrito
      * @param    array
      * @return    bool
      */
@@ -110,27 +110,24 @@ class Cart {
             if (!isset($item['rowid'], $this->cart_contents[$item['rowid']])){
                 return FALSE;
             }else{
-                // prep the quantity
+                // preparo la cantidad
                 if(isset($item['qty'])){
                     $item['qty'] = (float) $item['qty'];
-                    // remove the item from the cart, if quantity is zero
+                    // Si la cantidad es 0 , remueve el objeto del carro
                     if ($item['qty'] == 0){
                         unset($this->cart_contents[$item['rowid']]);
                         return TRUE;
                     }
                 }
-                
-                // find updatable keys
                 $keys = array_intersect(array_keys($this->cart_contents[$item['rowid']]), array_keys($item));
-                // prep the price
+                // preparo el precio
                 if(isset($item['precio'])){
                     $item['precio'] = (float) $item['precio'];
                 }
-                // product id & name shouldn't be changed
                 foreach(array_diff($keys, array('id', 'nombre')) as $key){
                     $this->cart_contents[$item['rowid']][$key] = $item[$key];
                 }
-                // save cart data
+                // Guardo los datos del carrito
                 $this->save_cart();
                 return TRUE;
             }
@@ -138,23 +135,21 @@ class Cart {
     }
     
     /**
-     * Save the cart array to the session
+     * Guardo el array del carro de la compra en la sesion
      * @return    bool
      */
     protected function save_cart(){
         $this->cart_contents['total_items'] = $this->cart_contents['cart_total'] = 0;
         foreach ($this->cart_contents as $key => $val){
-            // make sure the array contains the proper indexes
             if(!is_array($val) OR !isset($val['precio'], $val['qty'])){
                 continue;
             }
-     
             $this->cart_contents['cart_total'] += ($val['precio'] * $val['qty']);
             $this->cart_contents['total_items'] += $val['qty'];
             $this->cart_contents[$key]['subtotal'] = ($this->cart_contents[$key]['precio'] * $this->cart_contents[$key]['qty']);
         }
         
-        // if cart empty, delete it from the session
+        // si el carrito está vacío, lo elimíno de la sesión
         if(count($this->cart_contents) <= 2){
             unset($_SESSION['cart_contents']);
             return FALSE;
@@ -165,19 +160,19 @@ class Cart {
     }
     
     /**
-     * Remove Item: Removes an item from the cart
+     * Eliminar artículo: Elimino artículo del carrito
      * @param    int
      * @return    bool
      */
-     public function remove($row_id){
+    public function remove($row_id){
         // unset & save
         unset($this->cart_contents[$row_id]);
         $this->save_cart();
         return TRUE;
-     }
-     
+    }
+
     /**
-     * Destroy the cart: Empties the cart and destroy the session
+     * Destruye el carrito: Cuando el carrito está vacio lo destruyo de la sesion
      * @return    void
      */
     public function destroy(){

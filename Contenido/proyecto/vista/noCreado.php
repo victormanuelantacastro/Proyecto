@@ -3,7 +3,7 @@
 include '../controlador/conexion.php';
 //Traemos la sesion
 session_start();
-//Si el usuario no tiene sesión activa mandalo al index, y si tiene sesión activa y isAdmin = 1 mándalo a la página de administración
+//Si el usuario tiene sesión activa y isAdmin = 0 mándalo a la página de usuario, y si tiene sesión activa y isAdmin = 1 mándalo a la página de administración
 if (!empty($_SESSION['activo']) && $_SESSION['isAdmin'] == 0) {
     header('location: inicioUsuario.php');
 } else if (!empty($_SESSION['activo']) && $_SESSION['isAdmin'] == 1) {

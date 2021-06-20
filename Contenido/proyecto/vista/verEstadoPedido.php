@@ -1,7 +1,15 @@
 <?php
 
-require '../controlador/conexion.php';
+//Incluyo la conexión a la base de datos
+include '../controlador/conexion.php';
+//Traemos la sesion
 session_start();
+//Si el usuario no tiene sesión activa mandalo al index, y si tiene sesión activa y isAdmin = 1 mándalo a la página de administración
+if (empty($_SESSION['activo'])) {
+    header('location: ../index.php');
+} else if (!empty($_SESSION['activo']) && $_SESSION['isAdmin'] == 1) {
+    header('location: inicioAdmin.php');
+}
 
 $sql = "SELECT *, time_format(fechaCreacion, '%H:%i:%s') as hora, date(fechaCreacion) as fecha from orders";
 $resultado = $conn->query($sql);
@@ -27,7 +35,7 @@ $resultado = $conn->query($sql);
     <!-- Bootstrap Bundle with Popper & jquery-->
     <script src="../js/jquery-3.6.0.min.js"></script>
 
-    <title>Pedidos Pendientes</title>
+    <title>Ver estado del pedido</title>
     <script>
         $(document).ready(function() {
             $('#tabla').DataTable();

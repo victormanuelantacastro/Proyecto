@@ -1,7 +1,7 @@
 <?php
 //Traemos la sesion
 session_start();
-//Si el usuario no tiene sesión activa mandalo al index, y si tiene sesión activa y isAdmin = 1 mándalo a la página de administración
+//Si el usuario no tiene sesión activa mandalo al index, y si tiene sesión activa y isAdmin = 0 mándalo a la página de usuario
 if (empty($_SESSION['activo'])) {
     header('location: ../index.php');
 } else if (!empty($_SESSION['activo']) && $_SESSION['isAdmin'] == 0) {
