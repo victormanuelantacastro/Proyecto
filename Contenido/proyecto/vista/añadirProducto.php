@@ -69,13 +69,13 @@ if (empty($_SESSION['activo'])) {
             <div class="form-group row justify-content-md-center text-center">
                 <label class="col-lg-12 col-form-label">Nombre:</label>
                 <div class="col-lg-6">
-                    <input type="text" class="form-control" name="nombre" id="nombre" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{0,40}" title="Introduzca el nombre del producto" title="Introduzca 8 números y una letra" autofocus required>
+                    <input type="text" class="form-control" name="nombre" id="nombre" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{0,80}" title="Introduzca el nombre del producto" autofocus required>
                 </div>
             </div>
             <div class="form-group row justify-content-md-center text-center">
                 <label class="col-lg-12 col-form-label">Descripción:</label>
                 <div class="col-lg-6">
-                    <input type="text" class="form-control" name="descripcion" id="descripcion" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{0,40}" title="Introduzca entre 2 y 40 letras">
+                    <input type="text" class="form-control" name="descripcion" id="descripcion" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{0,40}" title="Introduzca entre 0 y 40 letras">
                 </div>
             </div>
             <div class="form-group row justify-content-md-center text-center">

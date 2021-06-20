@@ -91,7 +91,7 @@ if (empty($_SESSION['activo'])) {
         <div class="row text-center">
             <?php
             //get rows query
-            $query = $conn->query("SELECT * FROM producto WHERE tipo='Entrantes' ORDER BY id ASC LIMIT 30");
+            $query = $conn->query("SELECT * FROM producto WHERE tipo='Entrante' ORDER BY id ASC LIMIT 30");
             if ($query->num_rows > 0) {
                 while ($row = $query->fetch_assoc()) {
             ?>

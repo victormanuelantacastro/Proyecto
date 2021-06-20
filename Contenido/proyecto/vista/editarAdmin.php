@@ -1,23 +1,12 @@
 <?php
 //Traemos la sesion
 session_start();
-//Si el usuario no tiene sesión activa mandalo al index, y si tiene sesión activa y isAdmin = 1 mándalo a la página de administración
+//Si el usuario no tiene sesión activa mandalo al index, y si tiene sesión activa y isAdmin = 0 mándalo a la página del usuario
 if (empty($_SESSION['activo'])) {
     header('location: ../index.php');
 } else if (!empty($_SESSION['activo']) && $_SESSION['isAdmin'] == 0) {
     header('location: inicioUsuario.php');
 }
-
-//Traemos la conexión
-require '../controlador/conexion.php';
-
-$sql = "SELECT estado from orders where estado=0";
-$resultado = $conn->query($sql);
-$fila = $resultado->fetch_row();
-
-
-
-
 ?>
 <!doctype html>
 <html lang="es">
@@ -26,7 +15,6 @@ $fila = $resultado->fetch_row();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Refresh" content="15">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -34,7 +22,9 @@ $fila = $resultado->fetch_row();
     <link rel="stylesheet" href="../css/cabecera.css">
     <link rel="stylesheet" href="../css/pie.css">
     <link rel="stylesheet" href="../css/fuente.css">
-    <title>Tartessos Burger - Admin</title>
+    <link rel="stylesheet" href="../css/btn.css">
+
+    <title>Editar Perfil</title>
 
 </head>
 
@@ -52,24 +42,18 @@ $fila = $resultado->fetch_row();
                     <ul class="nav navbar-nav">
                         <li class="navbar-nav mr-auto">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <?php echo $_SESSION['usuario'] ?>
+                            <i class="fa fa-user"></i>&nbsp;&nbsp;<?php echo $_SESSION['usuario'] ?>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="inicioAdmin.php">Inicio</a>
-                                <a class="dropdown-item" href="editarAdmin.php">Editar Perfil</a>
+                                <a class="dropdown-item" href="inicioUsuario.php">Inicio</a>
+                                <a class="dropdown-item" href="editarUsuario.php">Editar Perfil</a>
                                 <a class="dropdown-item" href="../controlador/salir.php">Salir</a>
                             </div>
                         </li>
-                        <li><a class="nav-item nav-link" href="añadirProducto.php">Añadir producto</a> </li>
-                        <li><a class="nav-item nav-link" href="verProductos.php">Gestionar producto</a> </li>
-
-                        <?php if ($fila) { ?>
-                            <li><a class="nav-item nav-link" href="verPedidosPendientes.php"><i class="fa fa-bell"></i>&nbsp;&nbsp;Pedidos pendientes</a> </li>
-                        <?php } else { ?>
-                            <li><a class="nav-item nav-link" href="verPedidosPendientes.php">Pedidos pendientes</a></li>
-                        <?php } ?>
-
-                        <li><a class="nav-item nav-link" href="verPedidosFinalizados.php">Pedidos finalizados</a> </li>
+                        <li><a class="nav-item nav-link" href="entrante.php">Entrantes</a> </li>
+                        <li><a class="nav-item nav-link" href="bocadillo.php">Bocadillos Y Camperos</a> </li>
+                        <li><a class="nav-item nav-link" href="bebida.php">Bebida</a> </li>
+                        <li><a class="nav-item nav-link" href="verEstadoPedido.php">Estado de su pedido</a> </li>
                     </ul>
                 </div>
             </div>
@@ -77,32 +61,38 @@ $fila = $resultado->fetch_row();
     </header>
     <!--Final cabecera-->
     <!--Inicio contenido-->
-    <div class="container mt-4">
-        <div class="row justify-content-lg-center">
-            <div class="col-lg-8 mb-2">
-                <a href="añadirProducto.php" class="btn btn-primary btn-lg btn-block">Añadir producto</a>
-            </div>
-            <div class="col-lg-8 mb-2">
-                <a href="verProductos.php" class="btn btn-primary btn-lg btn-block">Gestionar producto</a>
-            </div>
-            <div class="col-lg-8 mb-2">
-                <?php if ($fila) { ?>
-                    <a class="btn btn-primary btn-lg btn-block" href="verPedidosPendientes.php"><i class="fa fa-bell"></i>&nbsp;&nbsp;Pedidos pendientes</a>
-                <?php } else { ?>
-                    <a class="btn btn-primary btn-lg btn-block" href="verPedidosPendientes.php">Pedidos pendientes</a>
-                <?php } ?>
-            </div>
-            <div class="col-lg-8 mb-2">
-                <a href="verPedidosFinalizados.php" class="btn btn-primary btn-lg btn-block">Pedidos finalizados</a>
-            </div>
-            <div class="col-lg-8 mb-2">
-                <a href="#" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#formulario">Producto más vendido</a>
+    <div class="container-fluid mb-2 mt-4">
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <h1>Editar perfil:</h1>
             </div>
         </div>
+        <form method="POST" action="../controlador/confirModificarAdmin.php">
+            <div class="form-group row justify-content-md-center text-center">
+                <label class="col-lg-2 col-form-label">Usuario: </label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" name="login" id="login" required value="<?php echo $_SESSION['usuario'] ?>">
+                </div>
+            </div>
+            <div class="form-group row justify-content-md-center text-center">
+                <label class="col-lg-2 col-form-label">Contraseña: </label>
+                <div class="col-lg-6">
+                    <input type="text" class="form-control" name="pass" id="pass" required value="<?php echo $_SESSION['password'] ?>">
+                </div>
+            </div>
+            <div class="centro">
+                <div class="form-group row justify-content-md-center text-center">
+                    <div class="col col-lg-12 mt-1">
+                        <button type="submit" class="btn btn-success btn-lg" id="añadir">Modificar</button>
+                        <button class="btn btn-primary  btn-lg"><a href="inicioAdmin.php">Retroceder</a></button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <!--Final contenido-->
     <!--Comienza el pie-->
-    <footer id="footer" class=" container-fluid mt-4">
+    <footer id="footer" class=" container-fluid">
         <div class="row text-center">
             <div class="col-12 col-lg-4">
                 <h3>Nos encontramos en...</h3>
@@ -131,45 +121,10 @@ $fila = $resultado->fetch_row();
         </div>
     </footer>
     <!--Final pie-->
-    <!--Empieza el modal-->
-    <div class="modal" tabindex="-1" id="formulario">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Producto más vendido</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="../controlador/grafico.php">
-                        <label for="mes">Elija el més:</label>
-                        <input type="number" value="1" min="1" max="12" id="mes" name="mes"><br>
-                        <label>Elija el tipo de producto:</label><br>
-                        <input type="radio" name="tipo" id="entrante" value="entrante" checked>
-                        <label for="entrantes">Entrantes</label>
-                        <input type="radio" name="tipo" id="bebida" value="bebida">
-                        <label for="bebida">Bebida</label>
-                        <input type="radio" name="tipo" id="bocata" value="bocata">
-                        <label for="bocata">Bocata</label>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Ver gráfica</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Acaba el modal-->
     <!-- Bootstrap Bundle with Popper & jquery-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>
