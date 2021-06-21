@@ -146,6 +146,8 @@ $fila = $resultado->fetch_row();
                         <label for="bebida">Bebida</label>
                         <input type="radio" name="tipo" id="bocata" value="bocata">
                         <label for="bocata">Bocata</label>
+                        <input type="radio" name="tipo" id="todo" value="todo">
+                        <label for="todo">Todos</label>
 
 
                 </div>
