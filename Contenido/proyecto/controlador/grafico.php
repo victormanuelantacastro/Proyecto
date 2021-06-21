@@ -12,9 +12,17 @@ if (empty($_SESSION['activo'])) {
 
 $mes = $_GET['mes'];
 $tipo = $_GET['tipo'];
-$sql = "SELECT nombre , cantidad , MONTH(fechaCreacion) AS fecha FROM order_items JOIN producto ON producto.id = order_items.product_id
-JOIN orders ON  orders.id = order_items.order_id WHERE MONTH(fechaCreacion)='$mes' AND tipo='$tipo';";
-$resultado = $conn->query($sql);
+
+if ($tipo != "todo") {
+    $sql = "SELECT nombre , count(*) AS cantidad , MONTH(fechaCreacion) AS fecha FROM order_items JOIN producto ON producto.id = order_items.product_id
+    JOIN orders ON  orders.id = order_items.order_id WHERE MONTH(fechaCreacion)='$mes' AND tipo='$tipo'  group by nombre;";
+    $resultado = $conn->query($sql);
+} else {
+    $sql = "SELECT nombre , count(*) AS cantidad , MONTH(fechaCreacion) AS fecha FROM order_items JOIN producto ON producto.id = order_items.product_id
+    JOIN orders ON  orders.id = order_items.order_id WHERE MONTH(fechaCreacion)='$mes'  group by nombre;";
+    $resultado = $conn->query($sql);
+}
+
 
 switch ($mes) {
     case 1:
